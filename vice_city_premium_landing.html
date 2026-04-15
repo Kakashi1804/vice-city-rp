@@ -1,0 +1,381 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+--gold:#C9A84C;--gold-dim:#8A6D2E;--gbg:rgba(201,168,76,0.07);--gbd:rgba(201,168,76,0.22);
+--rbg:rgba(192,57,43,0.07);--rbd:rgba(192,57,43,0.25);--rt:#D9695F;
+--gbg2:rgba(45,122,79,0.07);--gbd2:rgba(45,122,79,0.25);--gt:#3B9E62;
+--b:var(--color-border-tertiary);--b2:var(--color-border-secondary);
+--t:var(--color-text-primary);--m:var(--color-text-secondary);--h:var(--color-text-tertiary);
+--card:var(--color-background-primary);--surf:var(--color-background-secondary);
+}
+.w{font-family:'DM Sans',sans-serif;color:var(--t);max-width:920px;margin:0 auto;padding:0.25rem 0.5rem 3rem;}
+
+.hero{padding:2.5rem 0 2rem;border-bottom:0.5px solid var(--b);}
+.eyebrow{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,60px);letter-spacing:3px;line-height:1.02;margin-bottom:14px;}
+.h1 em{font-style:normal;color:var(--gold);}
+.tagline{font-style:italic;font-size:15px;color:var(--m);border-left:2px solid var(--gbd);padding-left:14px;max-width:560px;line-height:1.7;margin-bottom:20px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:8px;}
+.cta-a{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:10px 22px;background:var(--gold);color:#0D0D0D;border:none;border-radius:var(--border-radius-md);cursor:pointer;letter-spacing:0.3px;}
+.cta-b{font-family:'DM Sans',sans-serif;font-size:13px;padding:10px 18px;background:transparent;color:var(--m);border:0.5px solid var(--b2);border-radius:var(--border-radius-md);cursor:pointer;}
+.cta-b:hover{color:var(--t);border-color:var(--b2);}
+
+.nav{display:flex;flex-wrap:wrap;gap:4px;padding:1rem 0 0;border-bottom:0.5px solid var(--b);margin-bottom:0;}
+.nt{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:6px 12px;background:transparent;color:var(--m);border:0.5px solid transparent;border-radius:3px;cursor:pointer;transition:all 0.15s;}
+.nt:hover{color:var(--t);border-color:var(--b);}
+.nt.on{color:var(--gold);border-color:var(--gbd);background:var(--gbd);}
+
+.sec{display:none;padding:1.75rem 0 0.5rem;}
+.sec.on{display:block;}
+.sh{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--gold);margin-bottom:2px;}
+.ss{font-size:11px;color:var(--h);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.25rem;}
+
+.card{background:var(--card);border:0.5px solid var(--b);border-radius:var(--border-radius-lg);padding:1.1rem 1.35rem;margin-bottom:0.85rem;}
+.ch{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;margin-bottom:8px;}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.85rem;}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0.75rem;}
+.row{display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;}
+.lb{font-size:11px;color:var(--h);text-transform:uppercase;letter-spacing:1px;min-width:80px;padding-top:2px;flex-shrink:0;}
+.vl{font-size:13px;color:var(--t);line-height:1.6;}
+.div{border:none;border-top:0.5px solid var(--b);margin:10px 0;}
+.tag{display:inline-block;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin:2px 3px 2px 0;}
+.tg{background:var(--gbg);color:var(--gold);border:0.5px solid var(--gbd);}
+.tr{background:var(--rbg);color:var(--rt);border:0.5px solid var(--rbd);}
+.tk{background:var(--color-background-info);color:var(--color-text-info);border:0.5px solid var(--color-border-info);}
+.tv{background:var(--gbg2);color:var(--gt);border:0.5px solid var(--gbd2);}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:0.5px solid var(--b);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:0.85rem;}
+.split-col{padding:1.1rem 1.35rem;}
+.split-col:first-child{border-right:0.5px solid var(--b);}
+.split-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--h);margin-bottom:8px;}
+.split-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;margin-bottom:10px;}
+.check{display:flex;gap:8px;align-items:flex-start;margin-bottom:5px;font-size:13px;}
+.ci{min-width:14px;padding-top:2px;font-size:12px;}
+.ci-g{color:var(--gt);}
+.ci-m{color:var(--m);}
+
+.loop-step{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:0.5px solid var(--b);}
+.loop-step:last-child{border-bottom:none;}
+.ls-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gbd);line-height:1;min-width:24px;}
+.ls-body{}
+.ls-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;margin-bottom:3px;}
+.ls-sub{font-size:13px;color:var(--m);line-height:1.6;}
+.ls-tag{font-size:10px;color:var(--h);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.ls-outcomes{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.outcome-pill{font-size:11px;padding:3px 9px;border-radius:2px;border:0.5px solid var(--b);color:var(--m);background:var(--surf);}
+.outcome-pill.red{border-color:var(--rbd);color:var(--rt);background:var(--rbg);}
+.outcome-pill.gold{border-color:var(--gbd);color:var(--gold);background:var(--gbd);}
+.outcome-pill.grn{border-color:var(--gbd2);color:var(--gt);background:var(--gbg2);}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;margin-bottom:0.85rem;}
+.why-card{background:var(--card);border:0.5px solid var(--b);border-radius:var(--border-radius-lg);padding:1rem 1.2rem;}
+.why-icon{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+.why-stat{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;line-height:1;margin-bottom:4px;}
+.why-text{font-size:13px;color:var(--m);line-height:1.6;}
+
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:10px 0;}
+.contrast-col{border-radius:var(--border-radius-md);padding:12px 14px;}
+.contrast-col.bad{background:var(--rbg);border:0.5px solid var(--rbd);}
+.contrast-col.good{background:var(--gbg2);border:0.5px solid var(--gbd2);}
+.contrast-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.contrast-col.bad .contrast-label{color:var(--rt);}
+.contrast-col.good .contrast-label{color:var(--gt);}
+.contrast-item{font-size:12px;color:var(--m);line-height:1.7;padding-left:0;}
+
+.cta-section{background:var(--surf);border:0.5px solid var(--b);border-radius:var(--border-radius-lg);padding:1.75rem 1.5rem;text-align:center;margin-top:1.5rem;}
+.cta-section-h{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:6px;}
+.cta-section-s{font-size:14px;color:var(--m);max-width:440px;margin:0 auto 18px;line-height:1.7;}
+.cta-group{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+
+.note{background:var(--gbg);border:0.5px solid var(--gbd);border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;color:var(--m);line-height:1.65;margin:10px 0;}
+.code{background:var(--surf);border:0.5px solid var(--b);border-left:2.5px solid var(--gold);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:10px 14px;font-size:12px;font-family:monospace;line-height:1.9;color:#7BAF8E;margin:8px 0;}
+</style>
+
+<h2 class="sr-only">Vice City RP System — integration guide, economy flow, and why this matters for server owners</h2>
+
+<div class="w">
+
+<div class="hero">
+  <div class="eyebrow">A product for server owners — not a server to join</div>
+  <div class="h1">The RP system your team<br>builds <em>on top of.</em></div>
+  <div class="tagline">Most servers are one person, underdeveloped, still figuring it out. You're buying a finished system. Faction structure, event logic, seasonal progression, player-driven economies — all of it, done.</div>
+  <div class="cta-row">
+    <button class="cta-a" onclick="sendPrompt('I want to get this system for my server — what does implementation look like?')">Get this system for your server ↗</button>
+    <button class="cta-b" onclick="sendPrompt('Request a demo of the Vice City RP system')">Request a demo ↗</button>
+    <button class="cta-b" onclick="sendPrompt('Contact for Vice City RP implementation')">Contact for implementation ↗</button>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="nt on" onclick="sw('integrate',this)">How it integrates</button>
+  <button class="nt" onclick="sw('flow',this)">Economy flow</button>
+  <button class="nt" onclick="sw('why',this)">Why it matters</button>
+</div>
+
+<!-- HOW IT INTEGRATES -->
+<div id="integrate" class="sec on">
+  <div class="sh">How this integrates into your server</div>
+  <div class="ss">You handle the tech — this handles the world</div>
+
+  <div class="split">
+    <div class="split-col" style="background:var(--surf);">
+      <div class="split-label">Your team handles</div>
+      <div class="split-title">Infrastructure</div>
+      <div class="check"><span class="ci ci-m">—</span><span>Scripts and development</span></div>
+      <div class="check"><span class="ci ci-m">—</span><span>Server setup and configuration</span></div>
+      <div class="check"><span class="ci ci-m">—</span><span>Hosting and technical ops</span></div>
+      <div class="check"><span class="ci ci-m">—</span><span>Custom UI and visual assets</span></div>
+      <div class="check"><span class="ci ci-m">—</span><span>Player moderation enforcement</span></div>
+    </div>
+    <div class="split-col">
+      <div class="split-label">This system provides</div>
+      <div class="split-title">The world</div>
+      <div class="check"><span class="ci ci-g">+</span><span>Faction structure and interdependency design</span></div>
+      <div class="check"><span class="ci ci-g">+</span><span>Event frameworks and trigger timing</span></div>
+      <div class="check"><span class="ci ci-g">+</span><span>Seasonal progression and arc design</span></div>
+      <div class="check"><span class="ci ci-g">+</span><span>Player-driven outcome logic</span></div>
+      <div class="check"><span class="ci ci-g">+</span><span>Admin playbooks and execution guides</span></div>
+      <div class="check"><span class="ci ci-g">+</span><span>Retention and content engine systems</span></div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-bottom:0.85rem;">Think of it as the blueprint your development team builds on top of. You own the server. This system owns the story that keeps players inside it.</div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="ch">What you get on day one</div>
+      <div class="row"><span class="lb">Faction docs</span><span class="vl">Complete architecture for all 5 factions — mechanics, win conditions, interdependencies, and balance rules.</span></div>
+      <div class="row"><span class="lb">Trigger logic</span><span class="vl">Conditional event system with written branches. Your devs implement the tracking; this tells them exactly what to track and what fires when.</span></div>
+      <div class="row"><span class="lb">Season arcs</span><span class="vl">Six full seasons of narrative structure with mid-season twists, branching finales, and carry-forward consequences.</span></div>
+      <div class="row"><span class="lb">Admin playbook</span><span class="vl">Day-by-day execution timeline, role assignments, crisis protocols. Your admin team knows exactly what to do every day of the season.</span></div>
+      <div class="row"><span class="lb">Event scripts</span><span class="vl">Full run-of-show for trials, elections, war events, and between-season standalone events — roles, timing, outcome branches.</span></div>
+    </div>
+    <div class="card">
+      <div class="ch">What your devs do with it</div>
+      <div class="row"><span class="lb">Track nodes</span><span class="vl">Implement territory control tracking so the trigger system can read dock ownership, corner control, and faction standing.</span></div>
+      <div class="row"><span class="lb">Build the UI</span><span class="vl">Display the faction bulletin, season objective board, and Hot Intel drops — all defined in the system, built by your team.</span></div>
+      <div class="row"><span class="lb">Wire the economy</span><span class="vl">Script the drug price variable, laundering rate, and weapons supply gate — the values this system defines, implemented in your framework.</span></div>
+      <div class="row"><span class="lb">Log activity</span><span class="vl">Track the data points the trigger system reads: visibility score, deals completed, territory held, betrayal flags. The formulas are here. The logging is yours.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch">Integration reality check</div>
+    <div class="g3">
+      <div>
+        <div class="row"><span class="lb">No scripts</span><span class="vl">This is not a script pack. It is a design system. Your devs build the mechanics; this tells them what mechanics to build and why each one matters.</span></div>
+      </div>
+      <div>
+        <div class="row"><span class="lb">Framework agnostic</span><span class="vl">Works on any FiveM framework — ESX, QBCore, custom. The logic is framework-neutral. Adaptation is straightforward.</span></div>
+      </div>
+      <div>
+        <div class="row"><span class="lb">Modular</span><span class="vl">Don't want all 6 seasons? Start with 2. Skip the VCPD faction? Adapt the dependency web. The system is designed to be used in parts.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-section-h">Ready to implement?</div>
+    <div class="cta-section-s">A 30-minute call is enough to walk through what your team already has and where this system plugs in. No obligation.</div>
+    <div class="cta-group">
+      <button class="cta-a" onclick="sendPrompt('Book a setup call for the Vice City RP system')">Book a setup call ↗</button>
+      <button class="cta-b" onclick="sendPrompt('Get the Vice City RP system — what are my options?')">See pricing options ↗</button>
+    </div>
+  </div>
+</div>
+
+<!-- ECONOMY FLOW -->
+<div id="flow" class="sec">
+  <div class="sh">Example system flow — drug economy</div>
+  <div class="ss">Continuous player-driven loop · No admin scripting required · Self-sustaining conflict engine</div>
+
+  <div class="card" style="margin-bottom:1.25rem;">
+    <div class="ch">The loop</div>
+    <div style="font-size:13px;color:var(--m);line-height:1.7;">This is not a storyline an admin writes. It is a system that runs automatically, reacts to player behavior, and generates conflict, alliances, and content on its own. Every step below fires because a player made a choice.</div>
+  </div>
+
+  <div class="card">
+    <div class="loop-step">
+      <span class="ls-num">1</span>
+      <div class="ls-body">
+        <div class="ls-title">Import phase — Cartel receives supply</div>
+        <div class="ls-sub">Admin-triggered or fired automatically based on dock control data. Cartel sets the global drug rate at point of import. The rest of the server economy moves in response — whether players know it or not.</div>
+        <div class="ls-tag">Who acts: Cartel leadership · Admin reads dock control log · Probability table fires automatically</div>
+        <div class="ls-outcomes">
+          <span class="outcome-pill">Cartel controls docks → arrives intact</span>
+          <span class="outcome-pill red">Kings control docks → 40% theft chance</span>
+          <span class="outcome-pill red">Smugglers control → 70% theft chance</span>
+          <span class="outcome-pill">VCPD controls → seized → war arc fires</span>
+        </div>
+      </div>
+    </div>
+    <div class="loop-step">
+      <span class="ls-num">2</span>
+      <div class="ls-body">
+        <div class="ls-title">Distribution phase — gangs purchase and distribute</div>
+        <div class="ls-sub">Overtown Kings buy supply from Cartel at the current rate. Distribute to street corners. Their margin is street price minus Cartel rate. Cartel can raise or drop that rate at any time — every change creates pressure Kings have to react to.</div>
+        <div class="ls-tag">Who acts: Kings buy · Cartel prices · Players don't see the formula — they feel the pressure</div>
+        <div class="ls-outcomes">
+          <span class="outcome-pill red">Price raised → Kings absorb, raise, or bypass</span>
+          <span class="outcome-pill gold">Price dropped → Kings territory devalues</span>
+          <span class="outcome-pill">Bypass attempt → conflict event fires</span>
+        </div>
+      </div>
+    </div>
+    <div class="loop-step">
+      <span class="ls-num">3</span>
+      <div class="ls-body">
+        <div class="ls-title">Disruption phase — supply chain can be intercepted</div>
+        <div class="ls-sub">Any faction can break the chain. Smugglers accept contracts to intercept. VCPD seizes at point of sale. Kings rob a handoff. Syndicate routes a staged seizure through a bribed commander. Every disruption creates a downstream consequence that ripples through the entire economy.</div>
+        <div class="ls-tag">Who acts: Any faction · Disruptions are strategic choices with calculated risk/reward</div>
+        <div class="ls-outcomes">
+          <span class="outcome-pill red">Smuggler intercept → black market opens 48h</span>
+          <span class="outcome-pill">VCPD seize → scarcity fires → street price doubles</span>
+          <span class="outcome-pill gold">Syndicate staged → product routes to laundering</span>
+        </div>
+      </div>
+    </div>
+    <div class="loop-step">
+      <span class="ls-num">4</span>
+      <div class="ls-body">
+        <div class="ls-title">Law enforcement response — VCPD reacts to activity level</div>
+        <div class="ls-sub">VCPD doesn't act randomly. A live visibility score accumulates based on how much noise factions have made. When it crosses a threshold, the response tier escalates automatically. The Syndicate's most valuable service is suppressing this score — buying quiet for every faction that can afford it.</div>
+        <div class="ls-tag">Who acts: VCPD responds to score · Syndicate can suppress · Factions generate or reduce visibility</div>
+        <div class="code" style="margin-top:8px;">
+VISIBILITY += drug_sale(×1) + conflict(×3) + failed_transport(×2)<br>
+VISIBILITY -= bribe_paid(×4)<br><br>
+score &lt; 30  → VCPD passive<br>
+score 30–60 → VCPD active raids<br>
+score 60+   → full crackdown event fires
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:14px 0 4px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--h);margin-bottom:10px;">Continuous outcomes — fires without admin scripting</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;">
+        <div style="background:var(--rbg);border:0.5px solid var(--rbd);border-radius:var(--border-radius-md);padding:10px 12px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--rt);margin-bottom:3px;">Economy</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:3px;">Prices fluctuate</div>
+          <div style="font-size:12px;color:var(--m);line-height:1.5;">Supply disruptions make street product scarce or abundant. Every faction feels it differently.</div>
+        </div>
+        <div style="background:var(--rbg);border:0.5px solid var(--rbd);border-radius:var(--border-radius-md);padding:10px 12px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--rt);margin-bottom:3px;">Territory</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:3px;">Territory wars emerge</div>
+          <div style="font-size:12px;color:var(--m);line-height:1.5;">Economic pressure makes conflict rational without anyone writing a war storyline.</div>
+        </div>
+        <div style="background:var(--gbd);border:0.5px solid var(--gbd);border-radius:var(--border-radius-md);padding:10px 12px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:3px;">Alliances</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:3px;">Player alliances shift</div>
+          <div style="font-size:12px;color:var(--m);line-height:1.5;">Factions form and break deals based on economic self-interest — not storyline assignments.</div>
+        </div>
+        <div style="background:var(--gbg2);border:0.5px solid var(--gbd2);border-radius:var(--border-radius-md);padding:10px 12px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gt);margin-bottom:3px;">Content</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:3px;">Stories write themselves</div>
+          <div style="font-size:12px;color:var(--m);line-height:1.5;">Every player decision is a plot point. Creators document it. The server markets itself.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">This creates a continuous gameplay loop driven entirely by players. Admins set the conditions once. The system runs the economy. Players generate the drama.</div>
+
+  <div class="cta-section">
+    <div class="cta-section-h">See this running on your server</div>
+    <div class="cta-section-s">Walk through exactly how the economy loop would work with your existing faction setup.</div>
+    <div class="cta-group">
+      <button class="cta-a" onclick="sendPrompt('Request a demo to see the Vice City RP economy system in action')">Request a demo ↗</button>
+      <button class="cta-b" onclick="sendPrompt('Get the Vice City RP system for my server')">Get this system ↗</button>
+    </div>
+  </div>
+</div>
+
+<!-- WHY IT MATTERS -->
+<div id="why" class="sec">
+  <div class="sh">Why this matters</div>
+  <div class="ss">Static content keeps servers alive · Dynamic systems make them grow</div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">Retention</div>
+      <div class="why-stat">3–5×</div>
+      <div class="why-text">Longer average session time compared to unstructured servers. Players with stakes stay longer.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">Engagement</div>
+      <div class="why-stat">72h</div>
+      <div class="why-text">Maximum gap between events before players disengage. This system fires something every 72 hours by design.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">Longevity</div>
+      <div class="why-stat">18+ mo</div>
+      <div class="why-text">Six seasons of structured content before the world needs to evolve. Long shelf life per investment.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">Content output</div>
+      <div class="why-stat">5</div>
+      <div class="why-text">Pre-built content moments per season, marketed to creators 48 hours in advance. Your server promotes itself.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch">Most servers vs this system</div>
+    <div class="contrast">
+      <div class="contrast-col bad">
+        <div class="contrast-label">Most RP servers</div>
+        <div class="contrast-item">Static content — events are written and delivered once</div>
+        <div class="contrast-item" style="margin-top:4px;">Admin-dependent — storyline dies when admins burn out</div>
+        <div class="contrast-item" style="margin-top:4px;">No progression — players have nothing to lose, nothing to chase</div>
+        <div class="contrast-item" style="margin-top:4px;">Underdeveloped — one person trying to hold it together</div>
+        <div class="contrast-item" style="margin-top:4px;">Factions are isolated — they don't need each other</div>
+      </div>
+      <div class="contrast-col good">
+        <div class="contrast-label">This system</div>
+        <div class="contrast-item">Dynamic systems — player behavior generates the next event</div>
+        <div class="contrast-item" style="margin-top:4px;">Self-sustaining — conditional triggers run without admin input</div>
+        <div class="contrast-item" style="margin-top:4px;">Rank ladders with real power — players protect what they've earned</div>
+        <div class="contrast-item" style="margin-top:4px;">Finished infrastructure — six seasons, five factions, built</div>
+        <div class="contrast-item" style="margin-top:4px;">Dependency web — no faction can win without dealing with enemies</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch">What ongoing player motivation actually looks like</div>
+    <div class="row"><span class="lb">Stakes</span><span class="vl">Players have ranks, assets, and reputation that are at risk every season. The fear of losing what they've built keeps them logging in. Not a feature — a structural mechanic.</span></div>
+    <div class="row"><span class="lb">Anticipation</span><span class="vl">Something significant happens on this server every 72 hours. Not a finale — just a moment. A deal, a Hot Intel drop, a new development. Players check in because they know they might miss something real.</span></div>
+    <div class="row"><span class="lb">Identity</span><span class="vl">Players are named in the weekly lore recap. Their decisions are referenced in future events. Their characters become NPCs when they retire. People stay for worlds where they exist.</span></div>
+    <div class="row"><span class="lb">Revenue</span><span class="vl">People don't donate to keep a server online. They donate to protect a world they're emotionally invested in. This system builds that investment on purpose, systematically, over 18+ months.</span></div>
+  </div>
+
+  <div class="card">
+    <div class="ch">Long-term progression — what changes over time</div>
+    <div class="row"><span class="lb">World memory</span><span class="vl">Season consequences carry forward. The Cartel that fell in Season 1 is still referenced in Season 4. The world remembers what players did.</span></div>
+    <div class="row"><span class="lb">Legacy NPCs</span><span class="vl">Retired characters become named NPCs in the server lore. New players can interact with the history of the world they just joined.</span></div>
+    <div class="row"><span class="lb">New factions</span><span class="vl">Season 7+ introduces factions built from consequences of Seasons 1–6. The world evolves from its own history.</span></div>
+    <div class="row"><span class="lb">Player vote</span><span class="vl">After Season 6, the community votes on three things that shape Season 7. Players who shape the next chapter don't miss the next chapter.</span></div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-section-h">This is what your server is missing</div>
+    <div class="cta-section-s">Ongoing player motivation. Long-term progression. Dynamic world changes. Players stay longer, engage more, and create better content. That's what this system is built to deliver.</div>
+    <div class="cta-group">
+      <button class="cta-a" onclick="sendPrompt('I want to get this system for my server — apply for implementation')">Get this system for your server ↗</button>
+      <button class="cta-b" onclick="sendPrompt('Contact for Vice City RP implementation details')">Contact for implementation ↗</button>
+      <button class="cta-b" onclick="sendPrompt('Request a demo of the Vice City RP system')">Request a demo ↗</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
