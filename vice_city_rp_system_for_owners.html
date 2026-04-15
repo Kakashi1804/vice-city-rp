@@ -1,0 +1,562 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+--gold:#C9A84C;--gold-dim:#8A6D2E;--gold-bg:rgba(201,168,76,0.08);--gold-border:rgba(201,168,76,0.22);
+--red:#C0392B;--red-bg:rgba(192,57,43,0.1);--red-border:rgba(192,57,43,0.3);
+--green:#2D7A4F;--green-bg:rgba(45,122,79,0.1);--green-border:rgba(45,122,79,0.3);
+--card:var(--color-background-primary);--card2:var(--color-background-secondary);
+--text:var(--color-text-primary);--muted:var(--color-text-secondary);--hint:var(--color-text-tertiary);
+--border:var(--color-border-tertiary);--border2:var(--color-border-secondary);
+}
+.w{font-family:'DM Sans',sans-serif;color:var(--text);max-width:920px;margin:0 auto;padding:0.5rem 0.5rem 3rem;}
+.hero{padding:2rem 1rem 1.5rem;border-bottom:0.5px solid var(--border);}
+.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.hero-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,58px);letter-spacing:3px;color:var(--text);line-height:1.05;margin-bottom:10px;}
+.hero-sub{font-size:14px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:16px;}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:8px;}
+.cta-primary{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 20px;background:var(--gold);color:#0D0D0D;border:none;border-radius:var(--border-radius-md);cursor:pointer;letter-spacing:0.5px;}
+.cta-secondary{font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 20px;background:transparent;color:var(--muted);border:0.5px solid var(--border2);border-radius:var(--border-radius-md);cursor:pointer;}
+.nav{display:flex;flex-wrap:wrap;gap:4px;padding:1rem 0 0;border-bottom:0.5px solid var(--border);}
+.ntab{font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:6px 13px;background:transparent;color:var(--muted);border:0.5px solid transparent;border-radius:3px;cursor:pointer;transition:all 0.15s;}
+.ntab:hover{color:var(--text);border-color:var(--border);}
+.ntab.on{color:var(--gold);border-color:var(--gold-border);background:var(--gold-bg);}
+.sec{display:none;padding:1.5rem 0 0.5rem;}
+.sec.on{display:block;}
+.sh{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--gold);margin-bottom:2px;}
+.ss{font-size:11px;color:var(--hint);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.25rem;}
+.card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--border-radius-lg);padding:1.1rem 1.35rem;margin-bottom:0.9rem;}
+.card-h{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--text);margin-bottom:8px;}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.9rem;}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;}
+.row{display:flex;gap:8px;align-items:flex-start;margin-bottom:7px;}
+.lbl{font-size:11px;color:var(--hint);text-transform:uppercase;letter-spacing:1px;min-width:88px;padding-top:2px;flex-shrink:0;}
+.val{font-size:13px;color:var(--text);line-height:1.6;}
+.tag{display:inline-block;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin:2px 3px 2px 0;}
+.tg{background:var(--gold-bg);color:var(--gold);border:0.5px solid var(--gold-border);}
+.tr{background:var(--red-bg);color:#E57A70;border:0.5px solid var(--red-border);}
+.tk{background:var(--color-background-info);color:var(--color-text-info);border:0.5px solid var(--color-border-info);}
+.tgr{background:var(--green-bg);color:var(--green);border:0.5px solid var(--green-border);}
+.div{border:none;border-top:0.5px solid var(--border);margin:10px 0;}
+.code-box{background:var(--card2);border:0.5px solid var(--border);border-left:2.5px solid var(--gold);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:10px 14px;font-size:12px;font-family:monospace;line-height:1.85;color:#7BAF8E;margin:8px 0;}
+.warn-box{background:var(--gold-bg);border:0.5px solid var(--gold-border);border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;color:var(--muted);margin:10px 0;line-height:1.6;}
+.green-box{background:var(--green-bg);border:0.5px solid var(--green-border);border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;color:var(--text);margin:10px 0;line-height:1.6;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0;}
+.stat{background:var(--card2);border-radius:var(--border-radius-md);padding:12px 14px;}
+.stat-n{font-size:22px;font-weight:500;color:var(--text);}
+.stat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.timeline{padding-left:16px;border-left:0.5px solid var(--border);}
+.tl{position:relative;margin-bottom:14px;padding-left:14px;}
+.tl-dot{position:absolute;left:-20px;top:5px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.tl-d{font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;}
+.tl-t{font-size:13px;color:var(--text);line-height:1.5;}
+.tl-s{font-size:12px;color:var(--muted);margin-top:2px;}
+.rank-track{display:flex;flex-direction:column;gap:2px;margin:8px 0;}
+.rank{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:var(--card2);border-radius:var(--border-radius-md);}
+.rank-n{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gold-dim);min-width:18px;}
+.rank-name{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:var(--text);min-width:120px;}
+.rank-req{font-size:12px;color:var(--muted);line-height:1.5;}
+.rank-special{background:rgba(201,168,76,0.07);border:0.5px solid var(--gold-border);}
+.outcome-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:10px 0;}
+.oc{background:var(--card2);border:0.5px solid var(--border);border-radius:var(--border-radius-md);padding:10px 12px;}
+.oc-l{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:3px;}
+.oc-t{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;}
+.oc-e{font-size:12px;color:var(--muted);line-height:1.5;}
+.acc-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--border-radius-lg);margin-bottom:0.75rem;overflow:hidden;}
+.acc-hd{padding:1rem 1.35rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.acc-hd:hover{background:var(--card2);}
+.acc-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--text);}
+.acc-meta{font-size:11px;color:var(--muted);margin-top:2px;}
+.acc-chev{font-size:13px;color:var(--muted);transition:transform 0.2s;}
+.acc-body{display:none;padding:0 1.35rem 1.1rem;border-top:0.5px solid var(--border);}
+.acc-card.open .acc-body{display:block;}
+.acc-card.open .acc-chev{transform:rotate(180deg);}
+.flow-chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0;}
+.flow-box{background:var(--card2);border:0.5px solid var(--border);border-radius:var(--border-radius-md);padding:6px 12px;font-size:12px;color:var(--text);}
+.flow-arrow{font-size:12px;color:var(--muted);}
+.price-tier{background:var(--card);border:0.5px solid var(--border);border-radius:var(--border-radius-lg);padding:1.1rem 1.35rem;}
+.price-tier.featured{border:2px solid var(--color-border-info);}
+.price-badge{background:var(--color-background-info);color:var(--color-text-info);font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:var(--border-radius-md);display:inline-block;margin-bottom:8px;}
+.price-amt{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;color:var(--text);line-height:1;}
+.price-label{font-size:12px;color:var(--muted);margin-bottom:10px;}
+.check-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:13px;color:var(--text);}
+.check-mark{color:var(--green);font-size:14px;min-width:16px;margin-top:1px;}
+</style>
+
+<h2 class="sr-only">Vice City RP System — product overview for server owners</h2>
+
+<div class="w">
+
+<div class="hero">
+  <div class="eyebrow">For server owners &amp; operators</div>
+  <div class="hero-h">The RP System That Runs<br>Your Server For You</div>
+  <div class="hero-sub">Vice City RP is not a server. It is a complete narrative operating system — faction mechanics, trigger logic, admin controls, player progression, and a content engine — built to drop into your FiveM server and run for years.</div>
+  <div class="hero-ctas">
+    <button class="cta-primary" onclick="sendPrompt('I want to book a demo of the Vice City RP system')">Book a demo ↗</button>
+    <button class="cta-secondary" onclick="sendPrompt('How do I get the Vice City RP system for my server?')">Get the system ↗</button>
+    <button class="cta-secondary" onclick="sendPrompt('What does setup look like for Vice City RP?')">Setup process ↗</button>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="ntab on" onclick="sw('how',this)">How it works</button>
+  <button class="ntab" onclick="sw('admin',this)">Admin control</button>
+  <button class="ntab" onclick="sw('factions',this)">Factions</button>
+  <button class="ntab" onclick="sw('progression',this)">Progression</button>
+  <button class="ntab" onclick="sw('seasons',this)">Seasons</button>
+  <button class="ntab" onclick="sw('money',this)">Why it makes money</button>
+  <button class="ntab" onclick="sw('pricing',this)">Pricing</button>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how" class="sec on">
+  <div class="sh">How it runs in your server</div>
+  <div class="ss">Four weeks · One complete arc · Permanent world consequences</div>
+
+  <div class="card">
+    <div class="card-h">The season loop</div>
+    <div class="flow-chain">
+      <div class="flow-box">Week 1<br><span style="color:var(--muted);font-size:11px;">Factions establish control</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Week 2<br><span style="color:var(--muted);font-size:11px;">Conflict trigger fires</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Week 3<br><span style="color:var(--muted);font-size:11px;">Mid-season twist</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Week 4<br><span style="color:var(--muted);font-size:11px;">Finale event</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box" style="border-color:var(--gold-border);color:var(--gold);">S2 carries consequences</div>
+    </div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;">Every season ends with 2–3 branching outcomes determined entirely by what players did. The world keeps the scars. That's what makes players come back.</div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">Week 1 — establish</div>
+      <div class="row"><span class="lbl">What happens</span><span class="val">Factions come online and begin claiming territory, making deals, and recruiting.</span></div>
+      <div class="row"><span class="lbl">Admin role</span><span class="val">Monitor faction balance. Deploy "Hot Intel" to any faction that's slow to engage.</span></div>
+      <div class="row"><span class="lbl">Content moment</span><span class="val">First contact between factions. Pure raw energy. No script. Great stream bait.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-h">Week 2 — trigger fires</div>
+      <div class="row"><span class="lbl">What happens</span><span class="val">The conditional trigger system reads faction control data and fires the mid-point event automatically.</span></div>
+      <div class="row"><span class="lbl">Admin role</span><span class="val">Watch the 48h player window. If no resolution, force-escalate to the next branch.</span></div>
+      <div class="row"><span class="lbl">Content moment</span><span class="val">Paranoia spreads. Every faction suspects another. Cross-faction deals explode.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-h">Week 3 — alliances break</div>
+      <div class="row"><span class="lbl">What happens</span><span class="val">The mid-season twist activates. An NPC or staff-run character drops new information that changes everything.</span></div>
+      <div class="row"><span class="lbl">Admin role</span><span class="val">Run the twist NPC. Stay in character. Brief only the directly affected faction lead 24h ahead.</span></div>
+      <div class="row"><span class="lbl">Content moment</span><span class="val">The double-cross window. Best drama of the season. Every creator wants to be online this week.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-h">Week 4 — finale</div>
+      <div class="row"><span class="lbl">What happens</span><span class="val">Server-wide event. All factions online. Outcome is calculated from season-long activity data.</span></div>
+      <div class="row"><span class="lbl">Admin role</span><span class="val">Run the event script. Calculate outcome privately. Announce result. Tease Season 2 immediately.</span></div>
+      <div class="row"><span class="lbl">Content moment</span><span class="val">Maximum stakes. Mandatory stream week. Every creator posts. Server gets its biggest audience of the season.</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:var(--gold-border);">
+    <div class="card-h">The dependency web — why factions can't ignore each other</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Every faction needs something another faction controls. This is not flavor — it is the mechanical engine that forces interaction and creates content.</div>
+    <div class="flow-chain">
+      <div class="flow-box" style="border-color:var(--gold-border);">Cartel<br><span style="font-size:10px;color:var(--muted);">sets drug price</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Kings profit margin<br><span style="font-size:10px;color:var(--muted);">drops or grows</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Kings buy guns<br><span style="font-size:10px;color:var(--muted);">from Smugglers</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Smugglers get paid<br><span style="font-size:10px;color:var(--muted);">launder via Syndicate</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box" style="border-color:var(--red-border);">VCPD pressure<br><span style="font-size:10px;color:var(--muted);">triggers crackdown</span></div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px;">Cartel raises the price → Kings' margins compress → Kings attempt to bypass the Cartel → conflict event triggers automatically.</div>
+  </div>
+</div>
+
+<!-- ADMIN CONTROL -->
+<div id="admin" class="sec">
+  <div class="sh">Admin control panel</div>
+  <div class="ss">You run the world — the system handles the story</div>
+
+  <div class="card">
+    <div class="card-h">Trigger system — events react to players, not scripts</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">Admins set conditions. Players determine which branch fires. You never have to force a story — the logic does it.</div>
+    <div class="code-box">
+IF Cartel controls docks → shipment arrives safely → no event<br>
+IF Kings control docks → 40% theft probability per run<br>
+IF Smugglers control docks → 70% theft probability (motive)<br>
+IF VCPD controls docks → shipment seized → Cartel-VCPD war arc<br><br>
+→ Stolen: open 48h investigation window<br>
+→ No resolution by 48h: force-escalate, random faction accused<br>
+→ False evidence planted: planter becomes suspect if discovered
+    </div>
+    <div class="warn-box">Admin rule: never tell players the formula. They should feel like their choices mattered — not like they gamed a system.</div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">Faction influence tracking</div>
+      <div class="row"><span class="lbl">Territory</span><span class="val">Each faction controls named nodes on the map. Admin updates control status every 72h based on activity logs.</span></div>
+      <div class="row"><span class="lbl">Standing</span><span class="val">Public leaderboard updated every 3 days. Shows season objectives and current progress per faction.</span></div>
+      <div class="row"><span class="lbl">Loyalty log</span><span class="val">Admin-side record of every deal, betrayal, and defection. Referenced at finale to determine outcomes.</span></div>
+      <div class="row"><span class="lbl">Balance check</span><span class="val">If any faction drops below 5 active members, "New Blood" event fires within 24h automatically.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-h">Outcome control</div>
+      <div class="row"><span class="lbl">Branch limit</span><span class="val">Max 3 outcome branches per event. More than 3 is unmanageable live.</span></div>
+      <div class="row"><span class="lbl">48h rule</span><span class="val">Every open trigger has a 48h player window before admin escalation fires.</span></div>
+      <div class="row"><span class="lbl">Finale score</span><span class="val">Calculated privately from territory + activity + key decisions. Announced only as a result — never the math.</span></div>
+      <div class="row"><span class="lbl">Paper trail</span><span class="val">Every trigger activation logged in a private admin channel with timestamp and which branch fired.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Admin roles (minimum viable staff)</div>
+    <div class="g2">
+      <div>
+        <div class="row"><span class="lbl">Head Admin</span><span class="val">Owns the season narrative. Final call on all trigger outcomes. Plays the Don NPC in Season 5.</span></div>
+        <div class="row"><span class="lbl">Faction Leads</span><span class="val">One mod embedded in each faction. Monitors RP quality. Reports griefing without breaking immersion.</span></div>
+        <div class="row"><span class="lbl">Event Ops</span><span class="val">Runs trial and election logistics. Never in a player faction. Permanently neutral.</span></div>
+      </div>
+      <div>
+        <div class="row"><span class="lbl">Content Lead</span><span class="val">Single point of contact for streamers. Sends 48h alerts before major events. Coordinates clip compilations.</span></div>
+        <div class="row"><span class="lbl">Lore Keeper</span><span class="val">Maintains the server wiki, NPC dossiers, and event history. Owns continuity across seasons.</span></div>
+        <div class="row"><span class="lbl">Total staff</span><span class="val">Minimum 5 people. Can overlap roles on a small server. Never let one person run everything — burnout kills servers.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Crisis playbook</div>
+    <div class="row"><span class="lbl">Faction collapse</span><span class="val">Drops below 5 members mid-season → fire "New Blood" immediately. Never let a faction die quietly.</span></div>
+    <div class="row"><span class="lbl">Powergaming</span><span class="val">One in-character warning via faction lead. If repeated → faction-administered consequence (demotion, exile). Avoid public admin announcements.</span></div>
+    <div class="row"><span class="lbl">OOC drama</span><span class="val">Mandatory 24h cooling-off. Private mediation before any public action. Public bans are a last resort.</span></div>
+    <div class="row"><span class="lbl">Dead season</span><span class="val">Activity under 60% of Season 1 baseline by Day 20 → compress finale to Day 25. Energy over completion.</span></div>
+  </div>
+</div>
+
+<!-- FACTIONS -->
+<div id="factions" class="sec">
+  <div class="sh">Faction architecture</div>
+  <div class="ss">Five factions · Three power tiers · One ecosystem that forces interaction</div>
+
+  <div class="card" style="margin-bottom:1.25rem;">
+    <div class="card-h">The hard rule</div>
+    <div style="font-size:14px;color:var(--text);line-height:1.7;">No faction can win a season without making at least one deal with an enemy faction. The dependency web is not flavor — it is mechanical.</div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div style="margin-bottom:8px;"><span class="tag tg">Tier 1</span><span class="tag tr">Drug Supply</span></div>
+      <div class="card-h">Leonida Cartel</div>
+      <div class="row"><span class="lbl">Mechanic</span><span class="val">Sets the server's global drug price. Every cent the Kings earn flows through a Cartel-controlled rate.</span></div>
+      <div class="row"><span class="lbl">Chain effect</span><span class="val">Price raised → Kings' margins compress → Kings attempt bypass → conflict event triggers.</span></div>
+      <div class="row"><span class="lbl">Win state</span><span class="val">Control 3+ distribution nodes and survive the succession arc.</span></div>
+      <div class="row"><span class="lbl">Content hook</span><span class="val">Internal betrayal, loyalty tests, political succession, Game of Thrones energy.</span></div>
+    </div>
+    <div class="card">
+      <div style="margin-bottom:8px;"><span class="tag tg">Tier 2</span><span class="tag tr">Street Control</span></div>
+      <div class="card-h">Overtown Kings</div>
+      <div class="row"><span class="lbl">Mechanic</span><span class="val">Last-mile distribution. They move product the Cartel can't physically reach. Price takers, not price setters.</span></div>
+      <div class="row"><span class="lbl">Chain effect</span><span class="val">Kings' street sales fund Smuggler weapons buys. If Kings are broke, Smugglers starve too.</span></div>
+      <div class="row"><span class="lbl">Win state</span><span class="val">Control 5+ street corners and negotiate a direct Smuggler arms deal.</span></div>
+      <div class="row"><span class="lbl">Content hook</span><span class="val">Come-up arcs, turf war footage, loyalty drama. Highest action-per-session faction.</span></div>
+    </div>
+    <div class="card">
+      <div style="margin-bottom:8px;"><span class="tag tg">Tier 1</span><span class="tag tg">Finance</span></div>
+      <div class="card-h">The Syndicate</div>
+      <div class="row"><span class="lbl">Mechanic</span><span class="val">All dirty money must pass through Syndicate laundering. No clean money moves on the server without their cut.</span></div>
+      <div class="row"><span class="lbl">Chain effect</span><span class="val">Syndicate controls political donations → influences VCPD budget → shapes how aggressively law enforcement operates.</span></div>
+      <div class="row"><span class="lbl">Win state</span><span class="val">Place a bribed political candidate and control 2 VCPD commanders.</span></div>
+      <div class="row"><span class="lbl">Content hook</span><span class="val">Slow-burn corruption arcs, political intrigue. Built for creators who want character-driven storytelling.</span></div>
+    </div>
+    <div class="card">
+      <div style="margin-bottom:8px;"><span class="tag tg">Tier 2</span><span class="tag tr">Weapons</span></div>
+      <div class="card-h">Los Cayos Smugglers</div>
+      <div class="row"><span class="lbl">Mechanic</span><span class="val">Sole weapons supplier on the server. No faction can arm up without going through them. Pure leverage.</span></div>
+      <div class="row"><span class="lbl">Chain effect</span><span class="val">Smugglers embargo a faction → that faction can't escalate conflicts → power balance shifts within days.</span></div>
+      <div class="row"><span class="lbl">Win state</span><span class="val">Complete 10 supply runs without Coast Guard interception this season.</span></div>
+      <div class="row"><span class="lbl">Content hook</span><span class="val">Heists, double-crosses, open water chases. Mercenary energy — they work for whoever pays.</span></div>
+    </div>
+    <div class="card">
+      <div style="margin-bottom:8px;"><span class="tag tk">Tier 1</span><span class="tag tk">Law</span></div>
+      <div class="card-h">Vice City PD</div>
+      <div class="row"><span class="lbl">Mechanic</span><span class="val">Can freeze assets, issue warrants, and impound vehicles. The ultimate check on any faction that over-extends.</span></div>
+      <div class="row"><span class="lbl">Chain effect</span><span class="val">Syndicate bribes VCPD → enforcement drops → Cartel operates freely → Kings push harder → city destabilizes.</span></div>
+      <div class="row"><span class="lbl">Win state</span><span class="val">Maintain public approval above 40% OR fully corrupt the force — two completely different gameplay paths.</span></div>
+      <div class="row"><span class="lbl">Content hook</span><span class="val">Dirty cop arcs are the most-watched RP content category on the internet. This faction is a content machine.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESSION -->
+<div id="progression" class="sec">
+  <div class="sh">Player progression system</div>
+  <div class="ss">Every faction has a full rank ladder · Daily login hooks · Cross-faction mechanics</div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">Leonida Cartel</div>
+      <div class="rank-track">
+        <div class="rank"><span class="rank-n">1</span><span class="rank-name">Associate</span><span class="rank-req">Complete onboarding job. No requirements.</span></div>
+        <div class="rank"><span class="rank-n">2</span><span class="rank-name">Soldier</span><span class="rank-req">5 successful runs + vouched by a Capo</span></div>
+        <div class="rank"><span class="rank-n">3</span><span class="rank-name">Enforcer</span><span class="rank-req">Complete a hit + 2 weeks active + no betrayal flag</span></div>
+        <div class="rank"><span class="rank-n">4</span><span class="rank-name">Capo</span><span class="rank-req">Run an operation without admin help + recruit 2 soldiers</span></div>
+        <div class="rank"><span class="rank-n">5</span><span class="rank-name">Underboss</span><span class="rank-req">Season-long loyalty + Don's personal appointment</span></div>
+        <div class="rank rank-special"><span class="rank-n" style="color:var(--gold);">6</span><span class="rank-name" style="color:var(--gold);">The Don</span><span class="rank-req">Season 5 succession arc only. One player per server history.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h">Overtown Kings</div>
+      <div class="rank-track">
+        <div class="rank"><span class="rank-n">1</span><span class="rank-name">Prospect</span><span class="rank-req">Referred by a member. Must complete a corner shift.</span></div>
+        <div class="rank"><span class="rank-n">2</span><span class="rank-name">Runner</span><span class="rank-req">3 successful deliveries + no snitching on record</span></div>
+        <div class="rank"><span class="rank-n">3</span><span class="rank-name">Soldier</span><span class="rank-req">Hold a corner for 72h + survive one raid</span></div>
+        <div class="rank"><span class="rank-n">4</span><span class="rank-name">OG</span><span class="rank-req">2 weeks holding territory + mentored a new Prospect</span></div>
+        <div class="rank"><span class="rank-n">5</span><span class="rank-name">Lieutenant</span><span class="rank-req">Secured a direct deal with any outside faction</span></div>
+        <div class="rank rank-special"><span class="rank-n" style="color:var(--gold);">6</span><span class="rank-name" style="color:var(--gold);">OG King</span><span class="rank-req">Season vote by all active Kings. Democratic succession.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h">The Syndicate</div>
+      <div class="rank-track">
+        <div class="rank"><span class="rank-n">1</span><span class="rank-name">Analyst</span><span class="rank-req">Accepted by board. Background check RP required.</span></div>
+        <div class="rank"><span class="rank-n">2</span><span class="rank-name">Fixer</span><span class="rank-req">Successfully launder one transaction + no paper trail left</span></div>
+        <div class="rank"><span class="rank-n">3</span><span class="rank-name">Associate</span><span class="rank-req">Plant evidence or bribe an NPC official + stay clean</span></div>
+        <div class="rank"><span class="rank-n">4</span><span class="rank-name">Director</span><span class="rank-req">Run a full operation start-to-finish independently</span></div>
+        <div class="rank"><span class="rank-n">5</span><span class="rank-name">Partner</span><span class="rank-req">Control a revenue stream for a full season</span></div>
+        <div class="rank rank-special"><span class="rank-n" style="color:var(--gold);">6</span><span class="rank-name" style="color:var(--gold);">Chair</span><span class="rank-req">S2 election outcome. The winning faction's top player holds this.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h">Los Cayos Smugglers</div>
+      <div class="rank-track">
+        <div class="rank"><span class="rank-n">1</span><span class="rank-name">Deckhand</span><span class="rank-req">Complete a dock handoff. Know the channels.</span></div>
+        <div class="rank"><span class="rank-n">2</span><span class="rank-name">Runner</span><span class="rank-req">2 successful import runs + arrive on time both times</span></div>
+        <div class="rank"><span class="rank-n">3</span><span class="rank-name">Smuggler</span><span class="rank-req">One run under active Coast Guard pursuit + evade</span></div>
+        <div class="rank"><span class="rank-n">4</span><span class="rank-name">Broker</span><span class="rank-req">Negotiate a standing deal with another faction independently</span></div>
+        <div class="rank"><span class="rank-n">5</span><span class="rank-name">Captain</span><span class="rank-req">Lead a crew of 3+ on a high-value run without a loss</span></div>
+        <div class="rank rank-special"><span class="rank-n" style="color:var(--gold);">6</span><span class="rank-name" style="color:var(--gold);">Fleet Boss</span><span class="rank-req">Season-long supply dominance. Never embargoed by VCPD.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h">Vice City PD</div>
+      <div class="rank-track">
+        <div class="rank"><span class="rank-n">1</span><span class="rank-name">Cadet</span><span class="rank-req">Hired. Clean background required.</span></div>
+        <div class="rank"><span class="rank-n">2</span><span class="rank-name">Officer</span><span class="rank-req">10 successful arrests + pass a written server quiz</span></div>
+        <div class="rank"><span class="rank-n">3</span><span class="rank-name">Detective</span><span class="rank-req">Solve one open case + submitted evidence leads to conviction</span></div>
+        <div class="rank"><span class="rank-n">4</span><span class="rank-name">Sergeant</span><span class="rank-req">Lead a unit for 2 weeks + 80% clearance rate</span></div>
+        <div class="rank"><span class="rank-n">5</span><span class="rank-name">Commander</span><span class="rank-req">Admin appointment. Tied to VCPD political standing.</span></div>
+        <div class="rank" style="background:var(--red-bg);border:0.5px solid var(--red-border);"><span class="rank-n" style="color:#E57A70;">★</span><span class="rank-name" style="color:#E57A70;">Dirty track</span><span class="rank-req">Secret parallel track. Unlocks Syndicate missions. IA hunts you in S4.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h">Daily login hooks</div>
+      <div class="rank-track">
+        <div class="rank"><span class="rank-n" style="font-size:12px;">24h</span><span class="rank-name">Daily job</span><span class="rank-req">One repeatable faction job per rank per day. 15–20 min. Earns rank XP.</span></div>
+        <div class="rank"><span class="rank-n" style="font-size:12px;">6h</span><span class="rank-name">Hot intel</span><span class="rank-req">Random tip drops in faction channel. First player to act gets a bonus. Expires.</span></div>
+        <div class="rank"><span class="rank-n" style="font-size:12px;">7d</span><span class="rank-name">Streak reward</span><span class="rank-req">7-day active streak = 1.5× XP. 30-day = faction-wide public bonus.</span></div>
+        <div class="rank"><span class="rank-n" style="font-size:12px;">5d</span><span class="rank-name">Loyalty clock</span><span class="rank-req">Miss 5 days without notifying leadership = auto-demotion one tier.</span></div>
+        <div class="rank"><span class="rank-n" style="font-size:12px;">1/wk</span><span class="rank-name">Open deal slot</span><span class="rank-req">Every faction has one public deal slot weekly. Forces cross-faction interaction.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEASONS -->
+<div id="seasons" class="sec">
+  <div class="sh">Six-season arc</div>
+  <div class="ss">Each season has a focus faction, a mid-season trigger, and a branching finale</div>
+
+  <div class="acc-card open" onclick="toggleAcc(this)">
+    <div class="acc-hd"><div><div class="acc-title">Season 1 — Welcome to Vice City</div><div class="acc-meta">World establishment · Missing shipment · Public trial finale</div></div><span class="acc-chev">▼</span></div>
+    <div class="acc-body">
+      <div style="height:10px;"></div>
+      <div class="row"><span class="lbl">Mid-season</span><span class="val">Day 14: Trigger system reads dock control and fires the theft event. Paranoia spreads. Every faction suspects another.</span></div>
+      <div class="row"><span class="lbl">Finale</span><span class="val">Day 28–30: Public trial. Server votes on punishment. Someone powerful falls.</span></div>
+      <div class="outcome-g">
+        <div class="oc"><div class="oc-l">Branch A</div><div class="oc-t">Cartel insider convicted</div><div class="oc-e">Cartel weakened entering S2. Power vacuum opens.</div></div>
+        <div class="oc"><div class="oc-l">Branch B</div><div class="oc-t">Wrong faction blamed</div><div class="oc-e">Wrongful conviction. Revenge arc carries to S2.</div></div>
+        <div class="oc"><div class="oc-l">Branch C</div><div class="oc-t">Nobody convicted</div><div class="oc-e">Shipment resurfaces mid-S2 in enemy hands.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-card" onclick="toggleAcc(this)">
+    <div class="acc-hd"><div><div class="acc-title">Season 2 — Dirty Money</div><div class="acc-meta">Syndicate's season · Mayor election · Journalist investigation</div></div><span class="acc-chev">▼</span></div>
+    <div class="acc-body">
+      <div style="height:10px;"></div>
+      <div class="row"><span class="lbl">Mid-season</span><span class="val">A journalist NPC (staff-run) starts investigating. Players can help, silence, or feed them false information.</span></div>
+      <div class="row"><span class="lbl">Finale</span><span class="val">Election night. ELECTION_SCORE fires. Winning faction gets a tangible S3 benefit.</span></div>
+      <div class="code-box">ELECTION_SCORE = (territory × 2) + (bribes × 1.5) + (evidence_destroyed × 3) - (evidence_exposed × 4)</div>
+    </div>
+  </div>
+
+  <div class="acc-card" onclick="toggleAcc(this)">
+    <div class="acc-hd"><div><div class="acc-title">Season 3 — The Outside Comes In</div><div class="acc-meta">Foreign cartel invasion · Smuggler betrayal · Server-wide war</div></div><span class="acc-chev">▼</span></div>
+    <div class="acc-body">
+      <div style="height:10px;"></div>
+      <div class="row"><span class="lbl">Threat</span><span class="val">Santo Peligro — better funded, more violent, no existing allegiances. Hostile takeover attempt.</span></div>
+      <div class="row"><span class="lbl">Mid-season</span><span class="val">Smugglers let them in for payment. Every faction re-evaluates who they trust.</span></div>
+      <div class="outcome-g">
+        <div class="oc"><div class="oc-l">United defense</div><div class="oc-t">Santo Peligro driven out</div><div class="oc-e">Smugglers permanently weakened. Server unity buff for S4.</div></div>
+        <div class="oc"><div class="oc-l">Exploit chaos</div><div class="oc-t">SP absorbs a faction</div><div class="oc-e">That faction becomes a new hybrid enemy. S4 map changes entirely.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-card" onclick="toggleAcc(this)">
+    <div class="acc-hd"><div><div class="acc-title">Season 4 — Internal Affairs</div><div class="acc-meta">VCPD's season · Corruption trial · Player-run IA detective</div></div><span class="acc-chev">▼</span></div>
+    <div class="acc-body">
+      <div style="height:10px;"></div>
+      <div class="row"><span class="lbl">IA Detective</span><span class="val">Trusted community member selected by staff. A real player. Can be bribed, manipulated, or turned.</span></div>
+      <div class="row"><span class="lbl">Mid-season</span><span class="val">Evidence surfaces linking Syndicate directly to 3 VCPD commanders. Question isn't if corruption exists — it's how high it goes.</span></div>
+      <div class="row"><span class="lbl">Finale</span><span class="val">Public tribunal. Corrupt officers permanently retired unless they can escape the city before the verdict.</span></div>
+    </div>
+  </div>
+
+  <div class="acc-card" onclick="toggleAcc(this)">
+    <div class="acc-hd"><div><div class="acc-title">Season 5 — The Succession War</div><div class="acc-meta">The Don is dying · The will · Coronation or assassination</div></div><span class="acc-chev">▼</span></div>
+    <div class="acc-body">
+      <div style="height:10px;"></div>
+      <div class="row"><span class="lbl">Central NPC</span><span class="val">The Don — staff-run, referenced since S1. Terminal illness announced Day 1. The whole server has been building toward this.</span></div>
+      <div class="row"><span class="lbl">Mid-season</span><span class="val">The will names a civilian character nobody expected. Everyone wants them dead or controlled.</span></div>
+      <div class="row"><span class="lbl">Final 2 weeks</span><span class="val">Daily activity tracked. Every faction is influencing the outcome in real time. Whoever controls the throne reshapes S6.</span></div>
+    </div>
+  </div>
+
+  <div class="acc-card" onclick="toggleAcc(this)">
+    <div class="acc-hd"><div><div class="acc-title">Season 6 — Hurricane Season</div><div class="acc-meta">Category 5 incoming · Hidden infrastructure revealed · Reconstruction war</div></div><span class="acc-chev">▼</span></div>
+    <div class="acc-body">
+      <div style="height:10px;"></div>
+      <div class="row"><span class="lbl">Setup</span><span class="val">72h in-world warning. Each faction reacts according to their nature — Syndicate moves assets, Kings refuse to leave their corners, Smugglers charge for evacuation.</span></div>
+      <div class="row"><span class="lbl">Mid-season</span><span class="val">Storm uncovers hidden tunnels, safe houses, and buried money. Territory map partially resets.</span></div>
+      <div class="row"><span class="lbl">Finale</span><span class="val">Reconstruction race. Factions compete for rebuild contracts and the power vacuum left by those who fled and never came back.</span></div>
+      <div class="warn-box">This season is a content goldmine. Storm-hit Vice City is visually unlike anything on the server. Brief creators before it starts — they will want to film everything.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MONEY -->
+<div id="money" class="sec">
+  <div class="sh">Why this system makes money</div>
+  <div class="ss">Retention drives donations · Donations fund the server · The server grows</div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="stat-n">3–5×</div><div class="stat-l">longer session time vs unstructured servers</div></div>
+    <div class="stat"><div class="stat-n">72h</div><div class="stat-l">max gap between server events that players notice</div></div>
+    <div class="stat"><div class="stat-n">6+</div><div class="stat-l">seasons of storyline before the world needs a reset</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">built-in content moments per season pre-marketed to creators</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">The retention-to-revenue chain</div>
+    <div class="flow-chain">
+      <div class="flow-box">Players have stakes<br><span style="font-size:10px;color:var(--muted);">ranks, assets, reputation</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Players log in daily<br><span style="font-size:10px;color:var(--muted);">fear of missing moments</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Sessions are longer<br><span style="font-size:10px;color:var(--muted);">deep RP investment</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Emotional investment<br><span style="font-size:10px;color:var(--muted);">they care about this world</span></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box" style="border-color:var(--green-border);color:var(--green);">Donations follow<br><span style="font-size:10px;">naturally</span></div>
+    </div>
+    <div style="font-size:13px;color:var(--muted);margin-top:10px;line-height:1.7;">People don't donate to keep a server online. They donate to protect a world they're emotionally invested in. This system builds that investment systematically.</div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">What drives donations specifically</div>
+      <div class="row"><span class="lbl">Rank protection</span><span class="val">Players who've earned Capo or Detective donate to stay active. Rank is worth something real here.</span></div>
+      <div class="row"><span class="lbl">Finale stakes</span><span class="val">Players who are 3 weeks deep into a season will not miss the finale. They show up, they're active, they give.</span></div>
+      <div class="row"><span class="lbl">Community identity</span><span class="val">The Vice City Herald, lore posts, and named NPCs make players feel they belong to something. Belonging is worth paying for.</span></div>
+      <div class="row"><span class="lbl">Content investment</span><span class="val">Streamers who built a channel on your server have career skin in the game. They evangelize and they donate.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-h">Revenue-safe design rules</div>
+      <div class="row"><span class="lbl">No pay-to-win</span><span class="val">Every progression gate is activity-based, not purchase-based. Donors get cosmetic and lore perks only.</span></div>
+      <div class="row"><span class="lbl">Creator perks</span><span class="val">Partner and Featured creator tiers are free. Built on content output, not payment. This keeps quality streamers on the server without resentment.</span></div>
+      <div class="row"><span class="lbl">Longevity</span><span class="val">6 seasons of storyline = roughly 18+ months of structured content before the world needs to evolve. Long shelf life per investment.</span></div>
+      <div class="row"><span class="lbl">Reactivation</span><span class="val">Every returning player gets a re-entry mission. Churned players can come back. Churned players who come back donate at higher rates.</span></div>
+    </div>
+  </div>
+
+  <div class="green-box">
+    The servers that make consistent money are not the ones with the most players. They are the ones with players who feel like they would lose something if the server shut down. This system builds that feeling on purpose.
+  </div>
+</div>
+
+<!-- PRICING -->
+<div id="pricing" class="sec">
+  <div class="sh">Pricing &amp; what's included</div>
+  <div class="ss">Three tiers · One system · Your server running it</div>
+
+  <div class="g3">
+    <div class="price-tier">
+      <div class="card-h">Blueprint</div>
+      <div class="price-amt">$1,500</div>
+      <div class="price-label">One-time delivery</div>
+      <div class="div"></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Full 6-season story arc document</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Faction design specs (all 5)</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Trigger system logic</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Progression ladders (all 5 factions)</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Event scripts (trial, election, chaos events)</span></div>
+      <div class="check-item" style="color:var(--muted);"><span class="check-mark" style="color:var(--muted);">–</span><span>Admin playbook</span></div>
+      <div class="check-item" style="color:var(--muted);"><span class="check-mark" style="color:var(--muted);">–</span><span>Setup consultation</span></div>
+      <div class="check-item" style="color:var(--muted);"><span class="check-mark" style="color:var(--muted);">–</span><span>Ongoing support</span></div>
+    </div>
+    <div class="price-tier featured">
+      <div class="price-badge">Most popular</div>
+      <div class="card-h">Full System</div>
+      <div class="price-amt">$3,500</div>
+      <div class="price-label">One-time delivery + 30-day support</div>
+      <div class="div"></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Everything in Blueprint</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Full admin playbook with execution steps</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Day-by-day S1 launch timeline</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Crisis control protocol</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Content creator program docs</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Retention system setup guide</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>1 setup call (60 min)</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>30 days of async support</span></div>
+    </div>
+    <div class="price-tier">
+      <div class="card-h">Operator</div>
+      <div class="price-amt">$6,500+</div>
+      <div class="price-label">Full system + active partnership</div>
+      <div class="div"></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Everything in Full System</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Custom faction design for your server</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Live Season 1 launch support</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Admin team training session</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Monthly check-in calls (3 months)</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Content calendar built for your roster</span></div>
+      <div class="check-item"><span class="check-mark">+</span><span>Season 2 consultation included</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.25rem;">
+    <div class="card-h">Book a demo</div>
+    <div style="font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.7;">A demo walk-through takes 30 minutes. You'll see the trigger system in action, how the admin panel works, and exactly how Season 1 would run on your server.</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <button class="cta-primary" onclick="sendPrompt('I want to book a Vice City RP system demo for my server')">Book a demo ↗</button>
+      <button class="cta-secondary" onclick="sendPrompt('Tell me more about the Full System tier for Vice City RP')">Ask about the full system ↗</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+function toggleAcc(el){el.classList.toggle('open');}
+</script>
